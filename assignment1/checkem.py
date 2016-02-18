@@ -44,4 +44,18 @@ def rev_find_abbrev(name):
     if full.lower() == name.lower():
       return ab
 
-print rev_find_abbrev('alabama')
+# print rev_find_abbrev('alabama')
+
+
+# this function will take a variable number of names as arguments and just run
+# the original rev_find_abbrev function for each of the names, eventually
+# returning a string delimited by commas and spaces.
+def rev_find_abbrevs(*names):
+  ret = ""
+  count = len(names)
+  for name in names:
+    count -= 1
+    ret += (rev_find_abbrev(name) + ('' if count == 0 else ', '))
+  return ret
+
+# print rev_find_abbrevs('louisiana', 'california', 'south dakota')
