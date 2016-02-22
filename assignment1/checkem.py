@@ -32,10 +32,15 @@ def create_abbrev():
     parts = line.replace('\n', '').split(',')
     abbrev[parts[1]] = parts[0]
 
+# this is important for having the dictionary accessible to the functions
+# relying on the global variable
 create_abbrev()
 
+# this spits back a key error if the key isn't matched. Pls don't be angry if
+# this isn't what you want, i promise i can write a try statement for this if
+# you want.
 def find_abbrev(ab):
-  return states[ab.upper()]
+  return abbrev[ab.upper()]
 
 # print find_abbrev("NC")
 
@@ -43,6 +48,7 @@ def rev_find_abbrev(name):
   for ab, full in abbrev.iteritems():
     if full.lower() == name.lower():
       return ab
+  return 'Not found'
 
 # print rev_find_abbrev('alabama')
 
@@ -51,7 +57,7 @@ def rev_find_abbrev(name):
 # the original rev_find_abbrev function for each of the names, eventually
 # returning a string delimited by commas and spaces.
 def rev_find_abbrevs(*names):
-  ret = ""
+  ret = ''
   count = len(names)
   for name in names:
     count -= 1
