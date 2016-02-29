@@ -57,7 +57,7 @@ def from_json():
     """
     Load all content from dump.txt into Content.existing_content
     """
-    dump_file = open('dump.txt', 'r')
+    dump_file = open('dump.json', 'r')
 
     # read JSON string from dump_file
     json_string = dump_file.read()
